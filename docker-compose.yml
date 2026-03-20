@@ -1,0 +1,19 @@
+services:
+  kintone:
+    build: .
+    volumes:
+      # ソースコードをマウント（変更が即反映される）
+      - .:/app
+      # node_modules はコンテナ内のものを使う
+      - /app/node_modules
+      - /app/apps/quotation-app/node_modules
+      - /app/apps/quotation-app-dev/node_modules
+    ports:
+      - "5173:5173"
+    environment:
+      - NODE_ENV=development
+    env_file:
+      - .env
+    # ホットリロード用
+    stdin_open: true
+    tty: true
