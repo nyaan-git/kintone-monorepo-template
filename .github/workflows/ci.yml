@@ -1,0 +1,49 @@
+name: CI
+
+# どのブランチに push しても実行
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. コードを取得
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. Node.js セットアップ
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # 3. pnpm セットアップ
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+
+      # 4. 依存関係インストール
+      - name: Install dependencies
+        run: pnpm install
+
+      # 5. 型チェック
+      - name: Type check
+        run: pnpm --filter "@kintone-dev/*" exec tsc --noEmit
+
+      # 6. ESLint
+      - name: Lint
+        run: pnpm --filter "@kintone-dev/*" lint
+
+      # 7. ビルド
+      - name: Build
+        run: pnpm build

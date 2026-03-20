@@ -1,0 +1,45 @@
+name: Release
+
+# main に push したときに実行
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    name: Release changed apps to Production
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. コードを取得（履歴も取得して変更検知できるようにする）
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      # 2. Node.js セットアップ
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # 3. pnpm セットアップ
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+
+      # 4. 依存関係インストール
+      - name: Install dependencies
+        run: pnpm install
+
+      # 5. 変更があったアプリだけビルド & リリース
+      - name: Build and Release changed apps
+        env:
+          KINTONE_BASE_URL: ${{ secrets.KINTONE_BASE_URL }}
+          KINTONE_USERNAME: ${{ secrets.KINTONE_USERNAME }}
+          KINTONE_PASSWORD: ${{ secrets.KINTONE_PASSWORD }}
+        run: |
+          # 前回のコミットと比較して変更があったアプリだけ release を実行
+          pnpm turbo run release --filter='...[HEAD^]'
