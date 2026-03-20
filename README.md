@@ -147,4 +147,4 @@ KINTONE_PASSWORD=your-password
 
 ## ライセンス
 
-Private
+MIT
