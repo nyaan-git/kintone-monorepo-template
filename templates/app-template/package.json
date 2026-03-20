@@ -1,5 +1,5 @@
 {
-  "name": "@kintone-dev/{{APP_NAME}}",
+  "name": "@kintone/{{APP_NAME}}",
   "private": true,
   "version": "0.0.0",
   "type": "module",

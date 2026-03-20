@@ -1,4 +1,4 @@
-# kintone-dev
+# kintone-customizations
 
 kintone カスタマイズ開発のためのモノレポ環境。
 
@@ -22,8 +22,8 @@ kintone カスタマイズ開発のためのモノレポ環境。
 
 ```bash
 # クローン
-git clone https://github.com/nyaan-git/kintone-dev.git
-cd kintone-dev
+git clone https://github.com/nyaan-git/kintone-customizations.git
+cd kintone-customizations
 
 # 環境変数を設定
 cp .env.example .env
@@ -116,7 +116,7 @@ push すると自動で実行:
 ## プロジェクト構成
 
 ```
-kintone-dev/
+kintone-customizations/
 ├── apps/                    # アプリケーション
 │   ├── quotation-app/       # 見積書アプリ
 │   └── quotation-app-dev/   # 見積書アプリ（開発）

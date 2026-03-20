@@ -2,13 +2,13 @@
 
 ## 前提
 - `docker-compose.yml` があるディレクトリで実行すること
-- プロジェクトルート: `~/kintone-dev`
+- プロジェクトルート: `~/kintone-customizations`
 
 ## 基本コマンド
 
 ```bash
 # プロジェクトに移動
-cd ~/kintone-dev
+cd ~/kintone-customizations
 
 # 起動
 docker compose up
@@ -30,13 +30,13 @@ docker compose exec kintone sh
 docker compose exec kintone pnpm generate
 
 # 特定アプリをビルド
-docker compose exec kintone pnpm --filter @kintone-dev/quotation-app build
+docker compose exec kintone pnpm --filter @kintone/quotation-app build
 
 # 開発環境にデプロイ
-docker compose exec kintone pnpm --filter @kintone-dev/quotation-app deploy
+docker compose exec kintone pnpm --filter @kintone/quotation-app deploy
 
 # 本番にリリース
-docker compose exec kintone pnpm --filter @kintone-dev/quotation-app release
+docker compose exec kintone pnpm --filter @kintone/quotation-app release
 ```
 
 ## 新メンバーのセットアップ
@@ -46,8 +46,8 @@ docker compose exec kintone pnpm --filter @kintone-dev/quotation-app release
 wsl
 
 # 2. クローン
-git clone https://github.com/nyaan-git/kintone-dev.git
-cd kintone-dev
+git clone https://github.com/nyaan-git/kintone-customizations.git
+cd kintone-customizations
 
 # 3. 環境変数を設定
 cp .env.example .env
@@ -60,7 +60,7 @@ docker compose up
 ## Docker なしで開発する場合
 
 ```bash
-cd ~/kintone-dev/apps/quotation-app
+cd ~/kintone-customizations/apps/quotation-app
 pnpm dev:kintone
 ```
 

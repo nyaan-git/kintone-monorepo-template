@@ -38,11 +38,11 @@ jobs:
 
       # 5. 型チェック
       - name: Type check
-        run: pnpm --filter "@kintone-dev/*" exec tsc --noEmit
+        run: pnpm --filter "@kintone/*" exec tsc --noEmit
 
       # 6. ESLint
       - name: Lint
-        run: pnpm --filter "@kintone-dev/*" lint
+        run: pnpm --filter "@kintone/*" lint
 
       # 7. ビルド
       - name: Build
