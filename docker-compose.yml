@@ -4,10 +4,10 @@ services:
     volumes:
       # ソースコードをマウント（変更が即反映される）
       - .:/app
-      # node_modules はコンテナ内のものを使う
+      # node_modules はコンテナ内のものを使う（パフォーマンス向上）
       - /app/node_modules
-      - /app/apps/quotation-app/node_modules
-      - /app/apps/quotation-app-dev/node_modules
+      # 新しいアプリを追加したら、以下のように追記:
+      # - /app/apps/your-app/node_modules
     ports:
       - "5173:5173"
     environment:

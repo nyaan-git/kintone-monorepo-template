@@ -1,5 +1,5 @@
 {
-  "name": "kintone-customizations",
+  "name": "kintone-monorepo-template",
   "private": true,
   "version": "0.0.0",
   "scripts": {
