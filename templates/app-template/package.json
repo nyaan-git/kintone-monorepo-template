@@ -11,7 +11,7 @@
     "upload": "dotenv -e ../../.env -- kintone-customize-uploader customize-manifest.json",
     "deploy": "pnpm build && pnpm upload",
     "watch": "dotenv -e ../../.env -- kintone-customize-uploader customize-manifest.json --watch",
-    "dev:kintone": "concurrently -n build,upload -c blue,green \"pnpm build --watch\" \"pnpm watch\"",
+    "dev:kintone": "concurrently -n build,upload -c blue,green \"vite build --watch --mode development\" \"pnpm watch\"",
     "release": "pnpm build && dotenv -e ../../.env -- kintone-customize-uploader customize-manifest.prod.json"
   },
   "dependencies": {
